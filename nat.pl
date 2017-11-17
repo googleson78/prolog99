@@ -7,4 +7,6 @@ btw(X, Y, R):- X < Y, succ(X, X1), btw(X1, Y, R).
 genKS(1, S, [S]).
 genKS(K, S, [X|Xs]):- btw(0, S, X), S1 is S - X, succ(K1, K), genKS(K1, S1, Xs).
 
+genKTuples(K, X):- nat(N), genKS(K, N, X).
+
 genLists(X):- nat(N), btw(0, N, S), K is N - S, genKS(K, S, X).
