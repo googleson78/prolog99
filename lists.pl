@@ -1,3 +1,5 @@
+:-ensure_loaded(rev).
+
 empty([]).
 
 prefix(_, []).
@@ -13,4 +15,7 @@ only_subl(X, Y):- not((member(Z, X), not(sublist(Z, Y)))).
 
 %combining with a "subset" predicate we now get 
 %X contains all (and only) sublists of Y
-all_subl(X, Y):- only_subl(X, Y), not((sublist(Z, Y), not(member(Z, X)))).
+all_subl(X, Y):-not((sublist(Z, Y), not(member(Z, X)))), only_subl(X, Y).
+
+nulls(0, []).
+nulls(N, [[]|Xs]):- N > 0, succ(N1, N), nulls(N1, Xs).
