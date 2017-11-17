@@ -1,5 +1,4 @@
 :-ensure_loaded(nat).
-:-ensure_loaded(lists).
 
 genK199(0, []).
 genK199(K, [X|Xs]):- K > 0, succ(K1, K), btw(1, 99, X), genK199(K1, Xs).
